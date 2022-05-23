@@ -1,3 +1,4 @@
+<%@page import="dao.TodoRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <!DOCTYPE html>
   <html>
@@ -17,6 +18,8 @@
       }
 
       function addTodo() {
+    	  console.log('클릭');
+    	  postData('processAddTodo.jsp', {task : "test"});
       }
 
       function remove(id) {
@@ -26,6 +29,12 @@
   </head>
 
   <body>
+  
+  <%
+  TodoRepository repository = TodoRepository.getInstance();
+  out.println(repository.getTodos());
+  %>
+  
     <div class="todo-list-template">
       <div class="title">오늘 할 일</div>
 

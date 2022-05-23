@@ -7,6 +7,8 @@ import dto.Todo;
 
 public class TodoRepository {
 	
+	private static long currentId = 0;
+	
 	// 컬렉션 ArrayList로 dto 패키지 변수들을 저장받도록 하고 객체는 todos로 명명한다.
 	private List<Todo> todos = new ArrayList<>();
 	
@@ -20,5 +22,12 @@ public class TodoRepository {
 	// dto 변수들을 컬렉션 ArrayList 저장된 값들을 불러올 때 사용한다..
 	public List<Todo> getTodos(){
 		return todos;
+	}
+	
+	public void addTodo(Todo todo) {
+		todo.setId(currentId);
+		currentId++;
+		
+		todos.add(todo);
 	}
 }
