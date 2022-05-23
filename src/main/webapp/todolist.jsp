@@ -37,7 +37,7 @@
     	  //postData('processAddTodo.jsp', {task : "test"});
     	  let task = $('#text').val();
     	  $.ajax({
-    		  url: "processAddTodo.jsp",
+    		  url: "addTodo.do",
     		  type: "post",
     		  data: {"task" : task},
     		  success: function(data){
