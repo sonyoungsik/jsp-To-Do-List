@@ -67,6 +67,8 @@ public class TodoController extends HttpServlet {
 
 			repository.remove(id);
 		}
+		req.getSession().setAttribute("todos", repository.getTodos());
+		
 		req.getRequestDispatcher("todolist.jsp").forward(req, resp);
 	}
 }

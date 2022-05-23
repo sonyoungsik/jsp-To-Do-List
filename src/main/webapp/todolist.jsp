@@ -77,8 +77,14 @@
   <body>
   
   <%
+   // MVC 패턴(컨트롤러) 서버측 저장 : 세션(get) setAttribute(컬렉션 리스트 값 저장) 후 세션값 get하여 컬렉션 리스트값 출력해보는 경우입니다.
+   List<Todo> todosMVC = (List<Todo>) session.getAttribute("todos");
+   out.println(todosMVC);
+  
+   //싱글턴 패턴으로 dao 패키지 컬렉션 리스트 전체를 리턴하여 출력해주는 경우를 살펴보았습니다.
    TodoRepository repository = TodoRepository.getInstance();
-  /* out.println(repository.getTodos()); */
+   out.println(repository.getTodos());
+   
    List<Todo> todos = repository.getTodos();
   %>
   
