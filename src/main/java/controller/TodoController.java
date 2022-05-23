@@ -15,6 +15,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class TodoController extends HttpServlet {
 
+	/**
+	 * TodoController가 HttpServlet을 상속받기 때문에 직렬화(serialible:인스턴스가 파일에 저장되는 과정)로
+	 * 버전 불일치 문제를 없애기 위해 UID를 지정해주면 오류가 표시되지 않는다.
+	 */
+	private static final long serialVersionUID = -5789298759459019056L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doGet(req, resp);
@@ -24,6 +30,7 @@ public class TodoController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String command = req.getRequestURI().substring(req.getContextPath().length());
+		TodoRepository repository = TodoRepository.getInstance();
 
 		if (command.equals("/addTodo.do")) {
 
@@ -31,23 +38,17 @@ public class TodoController extends HttpServlet {
 
 			Todo todo = new Todo(task);
 
-			TodoRepository repository = TodoRepository.getInstance();
-
 			repository.addTodo(todo);
 			
 		} else if (command.equals("/toggleTodo.do")) {
 			
 			long id = Long.parseLong(req.getParameter("id"));
 
-			TodoRepository repository = TodoRepository.getInstance();
-
 			repository.toggle(id);
 		
 		} else if (command.equals("/removeTodo.do")) {
 			
 			long id = Long.parseLong(req.getParameter("id"));
-
-			TodoRepository repository = TodoRepository.getInstance();
 
 			repository.remove(id);
 		}
