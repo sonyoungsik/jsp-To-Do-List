@@ -22,7 +22,7 @@
       function setDone(id) {
     	  
     	  $.ajax({
-    		  url: "processToggle.jsp",
+    		  url: "toggleTodo.do",
     	  	  type: "post",
     	  	  data: {"id" : id},
     	  	  success: function(data){
