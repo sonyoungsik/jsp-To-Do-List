@@ -47,6 +47,16 @@
       }
 
       function remove(id) {
+    	  console.log('제거');
+    	  $.ajax({
+    		  url:"processRemoveTodo.jsp",
+    	  	  type: "post",
+    	  	  data: {"id" : id},
+    	  	  success: function(data){
+    	  		  window.location.reload();
+    	  	  }
+    	  })
+	    	  
       }
 
     </script>
@@ -75,7 +85,7 @@
       for(Todo todo : todos){
       %>
         <div class="todo-item" onclick="setDone(<%= todo.getId() %>)">
-
+        <div class="remove" onclick="remove(<%= todo.getId() %>)">&times;</div>
 	    <div class="todo-text <%=todo.isDone() ? "checked" : "" %>"><%= todo.getTask() %></div>
       <%
       }

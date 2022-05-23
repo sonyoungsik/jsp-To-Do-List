@@ -39,4 +39,16 @@ public class TodoRepository {
 			}
 		}
 	}
+	
+	public void remove(long id){
+		Todo removeTodo = null;
+		
+		for(Todo todo : todos) {
+			if(todo.getId() == id) {
+				removeTodo = todo;
+				break;
+			}
+		}
+		todos.remove(removeTodo);
+	}
 }
