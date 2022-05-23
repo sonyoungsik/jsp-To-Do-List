@@ -62,7 +62,7 @@
       function clearTodo(){
     	  console.log('초기화');
     	  $.ajax({
-    		  url:"processClearTodo.jsp",
+    		  url:"clearTodo.do",
     		  type: "get",
     		  success: function(data){
 				  window.location.reload();    			  
