@@ -1,3 +1,5 @@
+<%@page import="dto.Todo"%>
+<%@page import="java.util.List"%>
 <%@page import="dao.TodoRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <!DOCTYPE html>
@@ -54,7 +56,8 @@
   
   <%
   TodoRepository repository = TodoRepository.getInstance();
-  out.println(repository.getTodos());
+  //out.println(repository.getTodos());
+  List<Todo> todos = repository.getTodos();
   %>
   
     <div class="todo-list-template">
@@ -68,8 +71,17 @@
       </section>
 
       <section class="todos-wrapper">
+      <%
+      for(Todo todo : todos){
+      %>
+        <div class="todo-item" onclick="setDone(<%= todo.getId() %>)">
+
+	    <div class="todo-text <%=todo.isDone() ? "checked" : "" %>"><%= todo.getTask() %></div>
+      <%
+      }
+      %>
         
-        <div class="todo-item">
+<!--         <div class="todo-item">
           <div class="remove">&times;</div>
           <div class="todo-text checked">숙제</div>
           <div class="check-mark">&#x2713;</div>
@@ -78,7 +90,7 @@
         <div class="todo-item">
           <div class="remove">&times;</div>
           <div class="todo-text">청소</div>
-        </div>
+        </div> -->
         
       </section>
     </div>
