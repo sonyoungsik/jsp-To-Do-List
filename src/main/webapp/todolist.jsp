@@ -87,6 +87,14 @@
         <div class="todo-item" onclick="setDone(<%= todo.getId() %>)">
         <div class="remove" onclick="remove(<%= todo.getId() %>)">&times;</div>
 	    <div class="todo-text <%=todo.isDone() ? "checked" : "" %>"><%= todo.getTask() %></div>
+	    <%
+	    if(todo.isDone()){
+	    %>
+	    <div class="check-mark">&#x2713;</div>
+	    <%
+	    }
+	    %>
+	    </div>
       <%
       }
       %>
