@@ -23,10 +23,11 @@
       function addTodo() {
     	  console.log('클릭');
     	  //postData('processAddTodo.jsp', {task : "test"});
+    	  let task = $('#text').val();
     	  $.ajax({
     		  url: "processAddTodo.jsp",
     		  type: "post",
-    		  data: {task : "test"},
+    		  data: {"task" : task},
     		  success: function(data){
     			  window.location.reload();
     		  }
