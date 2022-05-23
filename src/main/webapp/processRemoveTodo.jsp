@@ -1,4 +1,4 @@
-<%@page import="dto.Todo"%>
+<%-- <%@page import="dto.Todo"%>
 <%@page import="dao.TodoRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,4 +15,4 @@ repository.remove(id);
 
 response.sendRedirect("todolist.jsp");
 
-%>
+%> --%>

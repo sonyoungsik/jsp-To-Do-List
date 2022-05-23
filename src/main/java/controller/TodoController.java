@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "TodoController", urlPatterns = { "/addTodo.do", "/toggleTodo.do" })
+@WebServlet(name = "TodoController", urlPatterns = { "/addTodo.do", "/toggleTodo.do", "/removeTodo.do" })
 
 public class TodoController extends HttpServlet {
 
@@ -42,6 +42,14 @@ public class TodoController extends HttpServlet {
 			TodoRepository repository = TodoRepository.getInstance();
 
 			repository.toggle(id);
+		
+		} else if (command.equals("/removeTodo.do")) {
+			
+			long id = Long.parseLong(req.getParameter("id"));
+
+			TodoRepository repository = TodoRepository.getInstance();
+
+			repository.remove(id);
 		}
 		req.getRequestDispatcher("todolist.jsp").forward(req, resp);
 	}

@@ -49,7 +49,7 @@
       function remove(id) {
     	  console.log('제거');
     	  $.ajax({
-    		  url:"processRemoveTodo.jsp",
+    		  url:"removeTodo.do",
     	  	  type: "post",
     	  	  data: {"id" : id},
     	  	  success: function(data){
