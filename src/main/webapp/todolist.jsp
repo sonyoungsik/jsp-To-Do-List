@@ -10,6 +10,9 @@
     <meta charset="UTF-8">
     
     <script src="assets/js/common.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
             
     <title>Todo List</title>
     
@@ -19,7 +22,15 @@
 
       function addTodo() {
     	  console.log('클릭');
-    	  postData('processAddTodo.jsp', {task : "test"});
+    	  //postData('processAddTodo.jsp', {task : "test"});
+    	  $.ajax({
+    		  url: "processAddTodo.jsp",
+    		  type: "post",
+    		  data: {task : "test"},
+    		  success: function(data){
+    			  window.location.reload();
+    		  }
+    	  })
       }
 
       function remove(id) {
