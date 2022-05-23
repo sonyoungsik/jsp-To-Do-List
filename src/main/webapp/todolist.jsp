@@ -18,6 +18,16 @@
     
     <script>
       function setDone(id) {
+    	  
+    	  $.ajax({
+    		  url: "processToggle.jsp",
+    	  	  type: "post",
+    	  	  data: {"id" : id},
+    	  	  success: function(data){
+    	  		  window.location.reload();
+    	  	  }
+    	  })
+    	  
       }
 
       function addTodo() {
