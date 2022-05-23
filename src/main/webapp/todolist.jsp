@@ -56,7 +56,19 @@
     	  		  window.location.reload();
     	  	  }
     	  })
-	    	  
+
+      }
+      
+      function clearTodo(){
+    	  console.log('초기화');
+    	  $.ajax({
+    		  url:"processClearTodo.jsp",
+    		  type: "get",
+    		  success: function(data){
+				  window.location.reload();    			  
+    		  }
+   		  })
+      
       }
 
     </script>
@@ -65,9 +77,9 @@
   <body>
   
   <%
-  TodoRepository repository = TodoRepository.getInstance();
-  //out.println(repository.getTodos());
-  List<Todo> todos = repository.getTodos();
+   TodoRepository repository = TodoRepository.getInstance();
+  /* out.println(repository.getTodos()); */
+   List<Todo> todos = repository.getTodos();
   %>
   
     <div class="todo-list-template">
@@ -75,8 +87,9 @@
 
       <section class="form-wrapper">
         <div class="form">
-          <input name="text" id="text" />
+          <input name="text" id="text" placeholder="오늘 할 일을 적어주세요..." />
           <div class="create-button" onclick="addTodo();">추가</div>
+          <div class="create-button" onclick="clearTodo();">초기화</div>
         </div>
       </section>
 
